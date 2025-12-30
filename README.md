@@ -51,30 +51,6 @@ The portal implements an ITIL-inspired ticket lifecycle with:
 - **Authentication:** Session-based, role-based access (User/Admin)  
 - **Deployment:** Azure App Service / Render  
 
-## Project Structure
-
-it-service-portal/
-├── server.js
-├── src/
-│   ├── app.js
-│   ├── db/
-│   │   ├── database.js
-│   │   └── schema.sql
-│   ├── middleware/
-│   │   └── auth.js
-│   └── routes/
-│       ├── auth.routes.js
-│       ├── tickets.routes.js
-│       └── admin.routes.js
-├── public/
-│   ├── index.html
-│   ├── login.html
-│   ├── user.html
-│   ├── admin.html
-│   ├── css/
-│   └── js/
-└── README.md
-
 ## Demo Credentials
 
 User:
