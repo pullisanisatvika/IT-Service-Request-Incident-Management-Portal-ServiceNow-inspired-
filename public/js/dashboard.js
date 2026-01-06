@@ -265,7 +265,7 @@ const renderCharts = (data) => {
             data.criticalCounts?.find((c) => c.critical == 0)?.count || 0,
             data.criticalCounts?.find((c) => c.critical == 1)?.count || 0
           ],
-          backgroundColor: ['#9ba3c3', '#ff6b6b']
+          backgroundColor: ['#9ba3c2', '#ff6b6b']
         }
       ]
     },
