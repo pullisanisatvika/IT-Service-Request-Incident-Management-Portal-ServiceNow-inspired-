@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Tickets | IT Service Portal</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo-mark">IT</div>
+        <div>
+          <strong>IT Service Portal</strong>
+          <div class="muted small">Admin Workspace</div>
+        </div>
+      </div>
+      <nav class="topnav">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/admin">Tickets</a>
+        <a href="/knowledge">Knowledge</a>
+        <a href="/productivity">Productivity</a>
+        <a href="/inventory">Inventory</a>
+        <a href="/projects">Projects</a>
+      </nav>
+      <div class="topbar-actions">
+        <button class="user-pill" id="user-menu-toggle" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar">IT</span>
+          <div>
+            <div id="admin-info-name"></div>
+            <div class="muted small" id="admin-info-role"></div>
+          </div>
+          <span class="chevron">▾</span>
+        </button>
+        <div class="user-menu" id="user-menu" hidden>
+          <a href="/settings">Profile</a>
+          <a href="/settings">Settings</a>
+          <button id="logout-menu">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="tickets-page">
+      <section class="controls-bar">
+        <div class="control-group">
+          <label class="muted small">Search</label>
+          <input type="search" id="filter-search" placeholder="Ticket #, title, requester" />
+        </div>
+        <div class="control-group">
+          <label class="muted small">Status</label>
+          <select id="filter-status">
+            <option value="">All</option>
+            <option>New</option>
+            <option>In Progress</option>
+            <option>Resolved</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="muted small">Priority</label>
+          <select id="filter-priority">
+            <option value="">All</option>
+            <option>P1</option>
+            <option>P2</option>
+            <option>P3</option>
+            <option>P4</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="muted small">Category</label>
+          <select id="filter-category">
+            <option value="">All</option>
+            <option>Network</option>
+            <option>Accounts</option>
+            <option>Hardware</option>
+            <option>Software</option>
+            <option>General</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="muted small">Assignee</label>
+          <select id="filter-assignee">
+            <option value="">All</option>
+            <option value="unassigned">Unassigned</option>
+            <option>Alice Johnson</option>
+            <option>Bob Smith</option>
+            <option>Charlie Nguyen</option>
+            <option>Dana Patel</option>
+            <option>Evan Lee</option>
+            <option>Service Desk</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="muted small">SLA</label>
+          <select id="filter-sla">
+            <option value="">Any</option>
+            <option value="On Track">On Track</option>
+            <option value="At Risk">At Risk</option>
+            <option value="Breached">Breached</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="muted small">Critical</label>
+          <select id="filter-critical">
+            <option value="">Any</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="muted small">Sort</label>
+          <select id="filter-sort">
+            <option value="created_desc">Newest</option>
+            <option value="created_asc">Oldest</option>
+            <option value="priority_desc">Priority</option>
+            <option value="sla_asc">SLA remaining</option>
+          </select>
+        </div>
+        <div class="control-group time-filters">
+          <button type="button" data-range="24h">Last 24h</button>
+          <button type="button" data-range="7d">Last 7 days</button>
+          <button type="button" data-range="30d">Last 30 days</button>
+          <button type="button" data-range="all" class="active">All</button>
+        </div>
+      </section>
+
+      <section class="quick-views">
+        <button class="pill-btn" data-view="all" aria-pressed="true">All</button>
+        <button class="pill-btn" data-view="group">My Group</button>
+        <button class="pill-btn" data-view="unassigned">Unassigned</button>
+        <button class="pill-btn" data-view="p1p2">P1 / P2</button>
+        <button class="pill-btn" data-view="risk">SLA At Risk</button>
+        <button class="pill-btn" data-view="breached">SLA Breached</button>
+      </section>
+
+      <section class="bulk-bar">
+        <div>
+          <strong id="bulk-count">0</strong> selected
+        </div>
+        <div class="bulk-actions">
+          <select id="bulk-assign">
+            <option value="">Bulk assign...</option>
+            <option>Alice Johnson</option>
+            <option>Bob Smith</option>
+            <option>Charlie Nguyen</option>
+            <option>Dana Patel</option>
+            <option>Evan Lee</option>
+            <option>Service Desk</option>
+          </select>
+          <select id="bulk-status">
+            <option value="">Bulk status...</option>
+            <option>New</option>
+            <option>In Progress</option>
+            <option>Resolved</option>
+          </select>
+          <select id="bulk-priority">
+            <option value="">Bulk priority...</option>
+            <option>P1</option>
+            <option>P2</option>
+            <option>P3</option>
+            <option>P4</option>
+          </select>
+          <button class="button ghost" id="bulk-apply">Apply</button>
+        </div>
+      </section>
+
+      <section class="tickets-layout">
+        <aside class="queue-panel">
+          <div id="ticket-queue" class="queue-list" aria-live="polite"></div>
+          <div id="queue-empty" class="empty-state" hidden>
+            <div class="empty-icon">🛈</div>
+            <div>No tickets match these filters.</div>
+            <div class="muted small">Try clearing filters or expanding the date range.</div>
+          </div>
+        </aside>
+
+        <section class="details-panel" id="details-panel">
+          <div class="empty-state" id="details-empty">
+            <div class="empty-icon">☰</div>
+            <div>Select a ticket from the queue</div>
+            <div class="muted small">Choose any row to view and edit details</div>
+          </div>
+          <div id="details-content" hidden></div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <div class="logo-mark">IT</div>
+        <div>
+          <strong>IT Service Portal</strong>
+          <div class="muted small">Acme IT Operations</div>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <div class="system-status">
+          <div>API uptime: <span class="status-green" id="api-uptime">99.9%</span></div>
+          <div>Last refresh: <span id="last-refresh">--</span></div>
+          <div>Health: <span class="status-green" id="health-status">Green</span></div>
+        </div>
+        <div>123 Service Lane, Suite 400, New York, NY</div>
+        <div>support@acmeitops.com • +1 (555) 123-4567</div>
+        <div class="footer-links">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/admin">Tickets</a>
+          <a href="/knowledge">Knowledge</a>
+          <a href="/productivity">Productivity</a>
+          <a href="/inventory">Inventory</a>
+          <a href="/projects">Projects</a>
+          <a href="/settings">Settings</a>
+        </div>
+        <div class="muted small">© 2025 IT Service Portal™</div>
+      </div>
+    </footer>
+
+    <script src="/js/common.js"></script>
+    <script src="/js/admin.js"></script>
+  </body>
+</html>

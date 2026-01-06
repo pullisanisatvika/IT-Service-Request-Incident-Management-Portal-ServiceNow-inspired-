@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | IT Service Portal</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo-mark">IT</div>
+        <div>
+          <strong>IT Service Portal</strong>
+          <div class="muted small">Admin Workspace</div>
+        </div>
+      </div>
+      <nav class="topnav">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/admin">Tickets</a>
+        <a href="/knowledge">Knowledge</a>
+        <a href="/productivity">Productivity</a>
+        <a href="/inventory">Inventory</a>
+        <a href="/projects">Projects</a>
+      </nav>
+      <div class="topbar-actions">
+        <button class="user-pill" id="user-menu-toggle" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar">IT</span>
+          <div>
+            <div id="admin-info-name"></div>
+            <div class="muted small" id="admin-info-role"></div>
+          </div>
+          <span class="chevron">▾</span>
+        </button>
+        <div class="user-menu" id="user-menu" hidden>
+          <a href="/settings">Profile</a>
+          <a href="/settings">Settings</a>
+          <button id="logout-menu">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-card">
+      <div class="time-filters">
+        <button type="button" data-range="24h">Last 24h</button>
+        <button type="button" data-range="7d">Last 7 days</button>
+        <button type="button" data-range="30d">Last 30 days</button>
+        <button type="button" data-range="all" class="active">All</button>
+      </div>
+
+      <section class="attention">
+        <div class="stat-card" data-filter="p1">
+          <div class="stat-value" id="attn-p1">0</div>
+          <div class="stat-label">P1 Incidents</div>
+        </div>
+        <div class="stat-card" data-filter="risk">
+          <div class="stat-value" id="attn-risk">0</div>
+          <div class="stat-label">SLA &lt; 1h</div>
+        </div>
+        <div class="stat-card" data-filter="unassigned">
+          <div class="stat-value" id="attn-unassigned">0</div>
+          <div class="stat-label">Unassigned</div>
+        </div>
+      </section>
+
+      <section id="stats" class="stats-grid"></section>
+
+      <section class="cardlet">
+        <h3>Recent Tickets</h3>
+        <div id="recent-tickets" class="recent-list"></div>
+      </section>
+
+      <section class="charts">
+        <div class="chart-card">
+          <h3>Tickets by Status</h3>
+          <canvas id="statusChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Tickets by Priority</h3>
+          <canvas id="priorityChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Tickets created (last 7 days)</h3>
+          <canvas id="dailyChart"></canvas>
+          <p class="muted small">vs previous 7 days</p>
+        </div>
+        <div class="chart-card">
+          <h3>MTTR by Priority (hrs)</h3>
+          <canvas id="mttrPriorityChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>MTTR by Resolver (hrs)</h3>
+          <canvas id="mttrResolverChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Top Categories</h3>
+          <canvas id="categoryChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>By Assignee</h3>
+          <canvas id="assigneeChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Business Critical</h3>
+          <canvas id="criticalChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>SLA Status</h3>
+          <canvas id="slaChart"></canvas>
+        </div>
+      </section>
+
+      <section class="cardlet">
+        <h3>SLA Heat</h3>
+        <p class="muted small">On Track / At Risk / Breached share by priority</p>
+        <div id="sla-heat" class="sla-heat"></div>
+      </section>
+
+      <section class="cardlet">
+        <h3>Operational Narratives</h3>
+        <p class="muted small">Rule-based insights for stakeholders</p>
+        <div id="narratives" class="narratives"></div>
+      </section>
+    </main>
+
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <div class="logo-mark">IT</div>
+        <div>
+          <strong>IT Service Portal</strong>
+          <div class="muted small">Acme IT Operations</div>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <div class="system-status">
+          <div>API uptime: <span class="status-green" id="api-uptime">99.9%</span></div>
+          <div>Last refresh: <span id="last-refresh">--</span></div>
+          <div>Health: <span class="status-green" id="health-status">Green</span></div>
+        </div>
+        <div>123 Service Lane, Suite 400, New York, NY</div>
+        <div>support@acmeitops.com • +1 (555) 123-4567</div>
+        <div class="footer-links">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/admin">Tickets</a>
+          <a href="/knowledge">Knowledge</a>
+          <a href="/productivity">Productivity</a>
+          <a href="/inventory">Inventory</a>
+          <a href="/projects">Projects</a>
+          <a href="/settings">Settings</a>
+        </div>
+        <div class="muted small">© 2025 IT Service Portal™</div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>

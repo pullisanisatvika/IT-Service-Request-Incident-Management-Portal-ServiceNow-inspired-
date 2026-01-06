@@ -1,0 +1,38 @@
+it-service-portal/
+├── server.js                 # Application entry point
+├── package.json              # Project metadata and scripts
+├── package-lock.json         # Dependency lock file
+├── data.sqlite               # SQLite database (auto-generated)
+│
+├── src/
+│   ├── app.js                # Express app configuration
+│   │
+│   ├── db/
+│   │   ├── database.js       # Database connection and initialization
+│   │   └── schema.sql        # SQL schema (users, tickets, audit logs)
+│   │
+│   ├── middleware/
+│   │   └── auth.js           # Authentication and role-based access control
+│   │
+│   └── routes/
+│       ├── auth.routes.js    # Login, logout, session handling
+│       ├── tickets.routes.js # User ticket APIs (create, view, track)
+│       └── admin.routes.js   # Admin workflows (priority, status, assignment)
+│
+├── public/
+│   ├── index.html            # Landing page
+│   ├── login.html            # Login UI
+│   ├── user.html             # User dashboard
+│   ├── admin.html            # Admin dashboard
+│   │
+│   ├── css/
+│   │   └── styles.css        # Global styling
+│   │
+│   └── js/
+│       ├── common.js         # Shared frontend utilities
+│       ├── login.js          # Login logic
+│       ├── user.js           # User ticket interactions
+│       └── admin.js          # Admin workflow logic
+│
+├── README.md                 # Project documentation
+└── .gitignore                # Git ignore rules

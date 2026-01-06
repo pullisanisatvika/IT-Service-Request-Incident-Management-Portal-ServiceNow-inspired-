@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | IT Service Portal</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo-mark">IT</div>
+        <div>
+          <strong>IT Service Portal</strong>
+          <div class="muted small">Admin Workspace</div>
+        </div>
+      </div>
+      <nav class="topnav">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/admin">Tickets</a>
+        <a href="/knowledge">Knowledge</a>
+        <a href="/productivity">Productivity</a>
+        <a href="/inventory">Inventory</a>
+        <a href="/projects">Projects</a>
+      </nav>
+      <div class="topbar-actions">
+        <button class="user-pill" id="user-menu-toggle" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar">IT</span>
+          <div>
+            <div id="admin-info-name"></div>
+            <div class="muted small" id="admin-info-role"></div>
+          </div>
+          <span class="chevron">▾</span>
+        </button>
+        <div class="user-menu" id="user-menu" hidden>
+          <a href="/settings">Profile</a>
+          <a href="/settings">Settings</a>
+          <button id="logout-menu">Logout</button>
+        </div>
+      </div>
+    </header>
+    <main class="admin-card">
+      <section class="cardlet">
+        <h3>In-flight Initiatives</h3>
+        <div class="project-list">
+          <div class="project-row">
+            <div>
+              <strong>Network Refresh</strong>
+              <div class="muted small">Upgrade core switches across sites</div>
+            </div>
+            <select>
+              <option>Unassigned</option>
+              <option>Network Team</option>
+              <option>Infra Squad</option>
+              <option>Vendor Partner</option>
+            </select>
+          </div>
+          <div class="project-row">
+            <div>
+              <strong>Zero Trust Rollout</strong>
+              <div class="muted small">MFA + device posture enforcement</div>
+            </div>
+            <select>
+              <option>Unassigned</option>
+              <option>IAM Team</option>
+              <option>Security Guild</option>
+              <option>Vendor Partner</option>
+            </select>
+          </div>
+          <div class="project-row">
+            <div>
+              <strong>ITSM Upgrade</strong>
+              <div class="muted small">New workflows & catalog items</div>
+            </div>
+            <select>
+              <option>Unassigned</option>
+              <option>Service Desk</option>
+              <option>Platform Team</option>
+              <option>Vendor Partner</option>
+            </select>
+          </div>
+          <div class="project-row">
+            <div>
+              <strong>Device Refresh</strong>
+              <div class="muted small">FY25 laptop replacements</div>
+            </div>
+            <select>
+              <option>Unassigned</option>
+              <option>Desktop Support</option>
+              <option>Procurement</option>
+              <option>Vendor Partner</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="cardlet">
+        <h3>Upcoming Milestones</h3>
+        <div class="list-stack">
+          <div class="list-row">
+            <div><strong>Network Refresh</strong><div class="muted small">Cutover NYC - Feb 28</div></div>
+            <span class="pill P2">P2</span>
+          </div>
+          <div class="list-row">
+            <div><strong>Zero Trust</strong><div class="muted small">Pilot complete - Mar 12</div></div>
+            <span class="pill P3">P3</span>
+          </div>
+          <div class="list-row">
+            <div><strong>Device Refresh</strong><div class="muted small">Procurement window - Mar 30</div></div>
+            <span class="pill P3">P3</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <div class="logo-mark">IT</div>
+        <div>
+          <strong>IT Service Portal</strong>
+          <div class="muted small">Acme IT Operations</div>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <div class="system-status">
+          <div>API uptime: <span class="status-green" id="api-uptime">99.9%</span></div>
+          <div>Last refresh: <span id="last-refresh">--</span></div>
+          <div>Health: <span class="status-green" id="health-status">Green</span></div>
+        </div>
+        <div>123 Service Lane, Suite 400, New York, NY</div>
+        <div>support@acmeitops.com • +1 (555) 123-4567</div>
+        <div class="footer-links">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/admin">Tickets</a>
+          <a href="/knowledge">Knowledge</a>
+          <a href="/productivity">Productivity</a>
+          <a href="/inventory">Inventory</a>
+          <a href="/projects">Projects</a>
+          <a href="/settings">Settings</a>
+        </div>
+        <div class="muted small">© 2025 IT Service Portal™</div>
+      </div>
+    </footer>
+    <script src="/js/common.js"></script>
+    <script>
+      (async () => {
+        await initHeader({ requireRole: 'admin' });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "it-service-request-incident-portal",
+  "version": "1.0.0",
+  "description": "IT Service Request & Incident Management Portal (ServiceNow-inspired)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "express-session": "^1.17.3",
+    "sqlite3": "^5.1.7",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
