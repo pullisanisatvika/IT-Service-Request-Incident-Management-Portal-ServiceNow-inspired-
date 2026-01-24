@@ -255,6 +255,11 @@ textarea {
   color: var(--muted);
 }
 
+.inline-link {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .error {
   min-height: 1.25rem;
   color: var(--danger);
@@ -802,6 +807,7 @@ tr.heat-breach td {
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
   cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 .time-filters button.active {
@@ -874,6 +880,13 @@ tr.heat-breach td {
   color: #ff6b6b;
 }
 
+.status-chip {
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
 .nav-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -913,6 +926,22 @@ tr.heat-breach td {
   cursor: pointer;
 }
 
+.attention-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.attention-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
 .stat-card.alert {
   border-color: #ff6b6b;
   box-shadow: 0 6px 18px rgba(255, 107, 107, 0.2);
@@ -937,6 +966,43 @@ tr.heat-breach td {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dashboard-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(83, 216, 251, 0.08), rgba(124, 242, 156, 0.08));
+  border: 1px solid rgba(83, 216, 251, 0.25);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+}
+
+.dashboard-hero h2 {
+  margin: 0 0 0.25rem;
+}
+
+.hero-filters {
+  justify-content: flex-end;
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  border-color: rgba(83, 216, 251, 0.2);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
 }
 
 .recent-item {
@@ -989,6 +1055,35 @@ tr.heat-breach td {
 
 .project-row select {
   min-width: 160px;
+}
+
+.progress-wrap {
+  margin-top: 0.35rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.3rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent), #7cf29c);
+  border-radius: 999px;
+}
+
+.milestone-row {
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.milestone-row:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
 }
 
 .site-footer {
